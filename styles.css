@@ -1,0 +1,45 @@
+html {
+  font-size: 22px;
+}
+
+body {
+  min-height: 100vh;
+  font-family: roboto;
+}
+
+h1 {
+  text-align: center;
+  padding: 3em;
+  font-weight: 800;
+}
+
+.content {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.container {
+  display: flex;
+  gap: 4rem;
+}
+
+.button {
+  background-color: whitesmoke;
+  padding: 2rem;
+}
+
+.button:hover {
+  background-color: bisque;
+}
+
+.counter {
+  background-color: bisque;
+  padding: 2rem;
+}
+
+.message {
+  text-align: center;
+  padding: 5rem;
+}
+

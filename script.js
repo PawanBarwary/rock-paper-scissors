@@ -1,15 +1,39 @@
+const buttons = document.querySelectorAll('.button');
+const humanCounter = document.querySelector('.human');
+const computerCounter = document.querySelector('.computer');
+const messageDiv = document.querySelector('.message'); 
+
+const updateGame = (button) => {
+  const choice = button.textContent;
+  const result = playGame(choice, computerPlay());
+  let numberInHumanCounter = parseInt(humanCounter.textContent);
+  let numberInComputerCounter = parseInt(computerCounter.textContent);
+  if(result.win === true) {
+    numberInHumanCounter = numberInHumanCounter + 1;
+    humanCounter.textContent = numberInHumanCounter;
+  }
+  else if (result.win === false) {
+    numberInComputerCounter = numberInComputerCounter + 1;
+    humanCounter.textContent = numberInHumanCounter;
+  }
+  messageDiv.textContent = result.message;
+};
+
+buttons.forEach(button => {
+  button.addEventListener('click',() => updateGame(button));
+});
+
 const computerPlay = () => {
   let randomNumber = Math.floor(Math.random()*3) + 1;
   switch(randomNumber) {
     case 1:
       return 'Rock';
-      break;
     case 2:
       return 'Paper';
     case 3: 
       return 'Scissors';
   }
-}
+};
 
 const playGame = (playerSelection, computerSelection) => {
   let outcome;
@@ -39,7 +63,7 @@ const playGame = (playerSelection, computerSelection) => {
   else if(outcome.win===false) {
     return {...outcome, message: `You lost! ${computerSelection} beats ${playerSelection}.`};
   }
-}
+};
 
 const game = (numGames) => {
   const allResults = [];
@@ -50,9 +74,8 @@ const game = (numGames) => {
     allResults.push(result.message);
   }
   return allResults;
-}
+};
 
 const playerSelection = "rock";
 const computerSelection = computerPlay();
 
-console.log(game(5));

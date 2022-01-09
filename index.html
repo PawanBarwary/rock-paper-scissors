@@ -4,9 +4,23 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <script src="script.js"></script>
+  <script src="script.js" defer></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css"> 
 </head>
 <body>
-  <button onclick="computerPlay()"> Play </button>
+  <h1>Rock Paper Scissors</h1>
+  <div class="content">
+    <div class="counter human">0</div>
+      <div class="container">
+        <div class="button">Rock</div>
+        <div class="button">Paper</div>
+        <div class="button">Scissors</div>
+      </div>
+    <div class="counter computer">0</div>
+  </div>  
+  <div class="message">Wanna play a Game?</div>
 </body>
 </html>
