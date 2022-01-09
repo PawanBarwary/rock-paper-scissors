@@ -1,19 +1,60 @@
+@font-face {
+  font-family:"Disney";
+  src: url("./fonts/NewWaltDisneyUi-8YdA.ttf") format("truetype");
+}
+:root {
+  --color-1: rgb(167, 169, 177);
+  --color-2: rgba(33, 42, 66, 0.953);
+}
+
+* {
+  margin: 0;
+}
+
 html {
   font-size: 22px;
 }
 
 body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: var(--color-1);
   min-height: 100vh;
   font-family: roboto;
 }
 
+footer, header {
+  background-color: var(--color-2);  
+  color: white;
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+}
+
 h1 {
+  font-family: "Disney";
+  color: white;
+  font-size: 2rem;
   text-align: center;
-  padding: 3em;
+  padding: 2em;
   font-weight: 800;
 }
 
+img {
+  width: 10rem;
+}
+
+.button, .counter {
+  border-radius: 15px;
+  font-weight: bold;
+}
+
 .content {
+  padding: 6rem 6rem 0rem 6rem;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -25,21 +66,35 @@ h1 {
 }
 
 .button {
+  font-size: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
   background-color: whitesmoke;
   padding: 2rem;
 }
 
 .button:hover {
-  background-color: bisque;
+  background-color: var(--color-2);
+  color: white;
+}
+
+.button:active {
+  transform: scale(1.1);
 }
 
 .counter {
-  background-color: bisque;
+  color: white;
+  background-color: var(--color-2);
   padding: 2rem;
 }
 
 .message {
+  
   text-align: center;
-  padding: 5rem;
+  padding: 3rem;
 }
+
+
 
