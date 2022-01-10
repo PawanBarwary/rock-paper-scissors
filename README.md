@@ -6,6 +6,7 @@ This is a web page where you can challenge Mickey Mouse in Rock Paper Scissors!
 
 This web application was made using Vanilla Javascript, HTML and CSS. 
 
+## Preview image
 ![A preview of the page](./images/preview-webpage.png)
 
 ## Try it out
