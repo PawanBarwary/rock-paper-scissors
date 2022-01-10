@@ -3,6 +3,23 @@ const humanCounter = document.querySelector('.human');
 const computerCounter = document.querySelector('.computer');
 const messageDiv = document.querySelector('.message'); 
 
+const resetCounters = () => {
+  humanCounter.textContent = 0;
+  computerCounter.textContent = 0;
+};
+
+const checkIfGameFinished = () => {
+  const numberInHumanCounter = parseInt(humanCounter.textContent);
+  const numberInComputerCounter = parseInt(computerCounter.textContent);
+  if (numberInComputerCounter == 5) {
+    typeWriter("The computer won!");
+    resetCounters();
+  }
+  if (numberInHumanCounter == 5) {
+    typeWriter("You won!");
+    resetCounters();
+  }
+}
 const updateGame = (button) => {
   const choice = button.classList[1];
   const result = playGame(choice, computerPlay());
@@ -16,12 +33,33 @@ const updateGame = (button) => {
     numberInComputerCounter = numberInComputerCounter + 1;
     computerCounter.textContent = numberInComputerCounter;
   }
-  messageDiv.textContent = result.message;
+  if(numberInComputerCounter == 5 || numberInHumanCounter == 5) {
+    typeWriter("Do you want to play a game?");
+  }
+  else {
+    typeWriter(result.message);
+  }
+  checkIfGameFinished();
 };
 
 buttons.forEach(button => {
   button.addEventListener('click',() => updateGame(button));
 });
+
+
+
+const typeWriter = (txt, speed = 50, i = 0) => {
+  if (i===0) {
+    messageDiv.textContent = "";
+  }
+  if (i < txt.length) {
+    messageDiv.innerHTML += txt.charAt(i);
+    i++;
+    setTimeout(() => typeWriter(txt, speed, i), speed);
+  }
+}
+
+typeWriter("Do you want to play a game?");
 
 const computerPlay = () => {
   const randomNumber = Math.floor(Math.random()*3) + 1;

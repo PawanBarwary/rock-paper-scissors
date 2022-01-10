@@ -1,7 +1,13 @@
 @font-face {
+  font-family:"Disney-head";
+  src: url("./fonts/NewWaltDisneyFontRegular-BPen.ttf") format("truetype");
+}
+
+@font-face {
   font-family:"Disney";
   src: url("./fonts/NewWaltDisneyUi-8YdA.ttf") format("truetype");
 }
+
 :root {
   --color-1: rgb(167, 169, 177);
   --color-2: rgba(33, 42, 66, 0.953);
@@ -12,7 +18,7 @@
 }
 
 html {
-  font-size: 22px;
+  font-size: 24px;
 }
 
 body {
@@ -21,7 +27,7 @@ body {
   justify-content: space-between;
   background: var(--color-1);
   min-height: 100vh;
-  font-family: roboto;
+  font-family: "Disney";
 }
 
 footer, header {
@@ -36,11 +42,11 @@ footer {
 }
 
 h1 {
-  font-family: "Disney";
+  font-family: "Disney-head";
   color: white;
-  font-size: 2rem;
+  font-size: 3rem;
   text-align: center;
-  padding: 2em;
+  padding: 1em;
   font-weight: 800;
 }
 
@@ -91,9 +97,13 @@ img {
 }
 
 .message {
-  
   text-align: center;
   padding: 3rem;
+}
+
+.logo {
+  width: 500px;
+  text-align: center;
 }
 
 
