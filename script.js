@@ -2,6 +2,14 @@ const buttons = document.querySelectorAll('.button');
 const humanCounter = document.querySelector('.human');
 const computerCounter = document.querySelector('.computer');
 const messageDiv = document.querySelector('.message'); 
+let disableClicks = true; 
+
+buttons.forEach(button => {
+  button.addEventListener('click',() => updateGame(button));
+});
+
+
+setTimeout( () => disableClicks = false, 2000); // Makes buttons unclickable until first message is delivered.
 
 const resetCounters = () => {
   humanCounter.textContent = 0;
@@ -12,15 +20,21 @@ const checkIfGameFinished = () => {
   const numberInHumanCounter = parseInt(humanCounter.textContent);
   const numberInComputerCounter = parseInt(computerCounter.textContent);
   if (numberInComputerCounter == 5) {
-    typeWriter("The computer won!");
+    messageDiv.classList.add('larger-text');
+    setTimeout( () => messageDiv.classList.remove('larger-text'), 2000);
+    typeWriter("I won! Disney is safe");
     resetCounters();
   }
   if (numberInHumanCounter == 5) {
+    messageDiv.classList.add('larger-text');
+    setTimeout( () => messageDiv.classList.remove('larger-text'), 2000);
     typeWriter("You won!");
     resetCounters();
   }
-}
+};
+
 const updateGame = (button) => {
+  if (disableClicks === true) {return ;}
   const choice = button.classList[1];
   const result = playGame(choice, computerPlay());
   let numberInHumanCounter = parseInt(humanCounter.textContent);
@@ -34,19 +48,14 @@ const updateGame = (button) => {
     computerCounter.textContent = numberInComputerCounter;
   }
   if(numberInComputerCounter == 5 || numberInHumanCounter == 5) {
-    typeWriter("Do you want to play a game?");
+    checkIfGameFinished();
   }
   else {
     typeWriter(result.message);
   }
-  checkIfGameFinished();
+  disableClicks = true;
+  setTimeout( () => disableClicks = false, 1600)
 };
-
-buttons.forEach(button => {
-  button.addEventListener('click',() => updateGame(button));
-});
-
-
 
 const typeWriter = (txt, speed = 50, i = 0) => {
   if (i===0) {
@@ -59,9 +68,9 @@ const typeWriter = (txt, speed = 50, i = 0) => {
   }
 }
 
-typeWriter("Do you want to play a game?");
+typeWriter("You want to duel me AHA? Beat me in 5 rounds of Rock Paper Scissors"); 
 
-const computerPlay = () => {
+const computerPlay = () => {  // Computer returns a random choice. 
   const randomNumber = Math.floor(Math.random()*3) + 1;
   switch(randomNumber) {
     case 1:
@@ -75,10 +84,6 @@ const computerPlay = () => {
 
 const playGame = (playerSelection, computerSelection) => {
   let outcome;
-  // console.group("Game")
-  // console.log("Player:" + playerSelection);
-  // console.log("Computer:" + computerSelection);
-  // console.groupEnd()
   if(playerSelection === computerSelection) {
     return { win: null, message: `You both got ${playerSelection}. It's a tie.`};
   }
